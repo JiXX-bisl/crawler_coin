@@ -1,0 +1,52 @@
+爬虫爬取对象
+1. 虚拟货币基础知识
+   - BTC
+   - ETH
+   - USDT
+   - USDC
+   - BNB
+   - TRX
+   - SOL
+   - XRP
+   - DOGE
+   - LTC
+
+2. 区块链网络类型
+   - Bitcoin
+   - Ethereum
+   - BNB Chain
+   - Tron
+   - Solana
+   - Polygon
+   - Arbitrum
+   - Optimism
+
+3. 交易类型
+   - 普通转账
+   - 合约调用
+   - Token 转账
+   - 跨链桥交易
+   - DEX Swap
+   - CEX 充值/提现
+   - NFT 交易
+   - 混币/隐私交易相关说明
+
+4. 交易特征
+   - 地址
+   - 哈希
+   - 区块高度
+   - Gas
+   - 手续费
+   - 输入输出
+   - UTXO
+   - ERC-20 Transfer
+   - Internal Transaction
+   - Contract Creation
+
+5. 公开交易平台/链上服务公司信息
+   - 交易所官网信息
+   - 帮助中心
+   - 公告
+   - API 文档
+   - 合规声明
+   - 风险提示

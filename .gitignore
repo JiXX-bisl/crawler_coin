@@ -1,0 +1,54 @@
+# Python caches and build artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Virtual environments and local environment files
+.venv/
+venv/
+env/
+ENV/
+.env
+.env.*
+!.env.example
+
+# Generated crawl, export, and analysis data
+data/
+*.db
+*.sqlite
+*.sqlite3
+*.jsonl
+*.xlsx
+*.xls
+*.parquet
+*.csv
+*.log
+
+# Downloaded/raw documents and generated text bundles
+*.pdf
+*.html
+*.htm
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+*.swo
+crypto_knowledge_chunk_distribution_pie_3d_soft.png

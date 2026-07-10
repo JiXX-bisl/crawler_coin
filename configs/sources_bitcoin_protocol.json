@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Bitcoin Whitepaper",
+    "group": "protocol_knowledge",
+    "type": "pdf",
+    "url": "https://bitcoin.org/bitcoin.pdf"
+  },
+  {
+    "name": "Bitcoin Developer Guide - Transactions",
+    "group": "protocol_knowledge",
+    "type": "html_exact",
+    "url": "https://developer.bitcoin.org/devguide/transactions.html"
+  },
+  {
+    "name": "Bitcoin Reference - Transactions",
+    "group": "protocol_knowledge",
+    "type": "html_exact",
+    "url": "https://developer.bitcoin.org/reference/transactions.html"
+  },
+  {
+    "name": "Bitcoin Developer Guide - Block Chain",
+    "group": "protocol_knowledge",
+    "type": "html_exact",
+    "url": "https://developer.bitcoin.org/devguide/block_chain.html"
+  },
+  {
+    "name": "Bitcoin Developer Guide - Wallets",
+    "group": "protocol_knowledge",
+    "type": "html_exact",
+    "url": "https://developer.bitcoin.org/devguide/wallets.html"
+  },
+  {
+    "name": "Bitcoin BIPs",
+    "group": "protocol_knowledge",
+    "type": "github_repo",
+    "owner": "bitcoin",
+    "repo": "bips",
+    "branch": "master",
+    "extensions": [".mediawiki", ".md", ".txt", ".rst"],
+    "max_files": 500
+  },
+  {
+    "name": "Bitcoin Core Documentation",
+    "group": "protocol_knowledge",
+    "type": "html_crawl",
+    "url": "https://bitcoincore.org/en/doc/",
+    "same_domain": true,
+    "path_prefix": "/en/doc/",
+    "max_pages": 80,
+    "max_depth": 2
+  }
+]
