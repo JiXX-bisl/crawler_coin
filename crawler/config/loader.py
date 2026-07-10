@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict
 
 from crawler.core.models import (
     CrawlConfig,
@@ -28,16 +28,9 @@ def as_list(value):
 
 def load_config(path, output_dir=None) -> CrawlConfig:
     raw = load_json(path)
-    if isinstance(raw, dict) and "job" in raw and "sources" in raw:
-        config = from_unified(raw)
-    elif isinstance(raw, dict) and raw.get("config_name") == "virtual_currency_illegal_case_sources":
-        config = from_illegal_case_legacy(raw)
-    elif isinstance(raw, list):
-        config = from_knowledge_legacy(raw)
-    elif isinstance(raw, dict) and "sources" in raw:
-        config = from_illegal_case_legacy(raw)
-    else:
-        raise ValueError("Unsupported crawl config format: %s" % path)
+    if not isinstance(raw, dict) or "job" not in raw or "sources" not in raw:
+        raise ValueError("Config must use unified_web_crawl_config format: %s" % path)
+    config = from_unified(raw)
     if output_dir:
         config.output.directory = output_dir
     return config
@@ -116,74 +109,4 @@ def from_unified(raw: Dict[str, Any]) -> CrawlConfig:
         runtime=runtime,
         output=output,
         sources=[source_from_unified(s, defaults) for s in raw.get("sources", [])],
-    )
-
-
-def from_illegal_case_legacy(raw: Dict[str, Any]) -> CrawlConfig:
-    policy = raw.get("global_crawl_policy") or {}
-    runtime = runtime_from_dict(policy)
-    sources: List[SourceConfig] = []
-    for item in raw.get("sources", []):
-        source_id = str(item.get("source_id") or item.get("id"))
-        seed_url = item.get("seed_url") or item.get("url")
-        metadata = {"illegal_case": dict(item)}
-        keywords = as_list(item.get("search_keywords"))
-        sources.append(
-            SourceConfig(
-                id=source_id,
-                enabled=bool(item.get("enabled", True)),
-                start_urls=[seed_url] if seed_url else [],
-                fetcher="http",
-                parser="auto",
-                discoverer="html_links" if item.get("contains_case_list") else "none",
-                extractor="generic_article",
-                pipeline="legacy_illegal_case",
-                max_depth=int(item.get("crawl_depth", policy.get("max_default_crawl_depth", 1))),
-                max_pages=int(item.get("max_pages_per_seed", policy.get("max_pages_per_seed", 1))),
-                url_rules=UrlRules(
-                    same_domain=not bool(item.get("follow_external_links", policy.get("follow_external_links", False))),
-                    allow_patterns=as_list(item.get("allow_url_patterns")),
-                    deny_patterns=as_list(item.get("deny_url_patterns")),
-                ),
-                discovery=DiscoveryConfig(enabled=True, positive_keywords=keywords, min_link_score=0.1),
-                metadata=metadata,
-            )
-        )
-    return CrawlConfig(
-        job={"id": raw.get("config_name", "legacy_illegal_case"), "metadata": {"legacy_format": "illegal_case"}},
-        runtime=runtime,
-        output=OutputConfig(directory="data/unified_illegal_case_crawl"),
-        sources=sources,
-    )
-
-
-def from_knowledge_legacy(items: List[Dict[str, Any]]) -> CrawlConfig:
-    runtime = RuntimeConfig(request_interval_seconds=1.0, timeout_seconds=60, max_retries=2)
-    sources = []
-    for item in items:
-        url = item.get("normalized_url") or item.get("url") or item.get("seed_url")
-        crawl_type = item.get("crawl_type") or "html"
-        discoverer = "html_links" if crawl_type == "html_crawl" else "none"
-        sources.append(
-            SourceConfig(
-                id=str(item.get("id")),
-                enabled=bool(item.get("crawl_enabled", True)),
-                start_urls=[url] if url else [],
-                fetcher="http",
-                parser="pdf" if crawl_type == "pdf" else "auto",
-                discoverer=discoverer,
-                extractor="generic_article",
-                pipeline="legacy_knowledge",
-                max_depth=int(item.get("max_depth", 1 if discoverer != "none" else 0)),
-                max_pages=int(item.get("max_pages", 50 if discoverer != "none" else 1)),
-                url_rules=UrlRules(same_domain=True, allow_patterns=as_list(item.get("allow_url_patterns")), deny_patterns=as_list(item.get("deny_url_patterns"))),
-                discovery=DiscoveryConfig(enabled=discoverer != "none", positive_keywords=as_list(item.get("topic_tags")), min_link_score=0.0),
-                metadata={"knowledge": dict(item)},
-            )
-        )
-    return CrawlConfig(
-        job={"id": "legacy_knowledge", "metadata": {"legacy_format": "knowledge"}},
-        runtime=runtime,
-        output=OutputConfig(directory="data/unified_knowledge_crawl"),
-        sources=sources,
     )

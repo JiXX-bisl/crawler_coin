@@ -51,7 +51,8 @@ class RobotGuard:
         parser = self.cache[base]
         if parser is None:
             return True, "robots_fetch_failed"
-        return parser.can_fetch(self.user_agent, parsed), "robots_allowed"
+        allowed = parser.can_fetch(self.user_agent, parsed)
+        return allowed, "robots_allowed" if allowed else "robots_denied"
 
 
 class CrawlEngine:

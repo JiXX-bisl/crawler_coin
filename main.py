@@ -1,20 +1,13 @@
 # -*- coding: utf-8 -*-
 import argparse
 import json
-import sys
-from pathlib import Path
-
-ROOT = Path(__file__).resolve().parents[1]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
-
 from crawler.config.loader import load_config
 from crawler.core.engine import CrawlEngine
 
 
 def build_parser():
     parser = argparse.ArgumentParser(description="Run the unified crawler")
-    parser.add_argument("--config", required=True, help="Unified or legacy crawl config JSON")
+    parser.add_argument("--config", required=True, help="Unified crawl config JSON")
     parser.add_argument("--output-dir", default=None)
     parser.add_argument("--source-id", action="append", default=[])
     parser.add_argument("--max-pages", type=int, default=None)
