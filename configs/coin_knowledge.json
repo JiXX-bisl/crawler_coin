@@ -3,7 +3,7 @@
   "schema_version": "1.0",
   "job": {
     "id": "coin_knowledge",
-    "name": "??????????",
+    "name": "虚拟货币知识资料采集",
     "version": "1.0",
     "metadata": {
       "dataset": "coin_knowledge",

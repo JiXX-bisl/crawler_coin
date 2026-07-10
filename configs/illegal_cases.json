@@ -3,7 +3,7 @@
   "schema_version": "1.0",
   "job": {
     "id": "illegal_cases",
-    "name": "????????????",
+    "name": "虚拟货币违法犯罪案例采集",
     "version": "1.0",
     "metadata": {
       "dataset": "illegal_cases",
