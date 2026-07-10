@@ -18,12 +18,14 @@ python scripts/virtual_currency_static_crawler.py --config configs/virtual_curre
 ```
 1. 根据爬取网址配置文件`configs/virtual_currency_seed_urls.json`进行内容获取
 ```powershell
-# 完整爬取
+# 完整爬取虚拟货币
 python scripts/virtual_currency_static_crawler.py --config configs/virtual_currency_seed_urls.json --out data/virtual_currency_raw --delay 1.0 --timeout 60
 # 只爬取A优先级（B、C同理）
 python scripts/virtual_currency_static_crawler.py --config configs/virtual_currency_seed_urls.json --out data/virtual_currency_raw_A --only-priority A --delay 1.0 --timeout 60
 # 只爬取固定币种
 python scripts/virtual_currency_static_crawler.py --config configs/virtual_currency_seed_urls.json --out data/virtual_currency_raw_btc_eth --only-coin BTC,ETH --delay 1.0 --timeout 60
+# 完整爬取违法行为案例
+python scripts/virtual_currency_illegal_case_crawler.py
 ```
 2. 对爬取得到的结果进行过滤（可选）
 ```powershell

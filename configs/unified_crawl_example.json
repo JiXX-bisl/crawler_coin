@@ -1,0 +1,61 @@
+{
+  "job": {
+    "id": "unified_example",
+    "name": "Unified crawler example",
+    "version": "1.0",
+    "metadata": {
+      "dataset": "example"
+    }
+  },
+  "runtime": {
+    "request_interval_seconds": 1,
+    "timeout_seconds": 30,
+    "max_retries": 2,
+    "respect_robots_txt": true,
+    "deduplication": {
+      "url": true,
+      "content": true
+    }
+  },
+  "output": {
+    "directory": "data/unified_example_crawl",
+    "records_file": "records.jsonl",
+    "failures_file": "failures.jsonl",
+    "report_file": "crawl_report.json"
+  },
+  "defaults": {
+    "crawl": {
+      "max_depth": 0,
+      "max_pages": 1
+    }
+  },
+  "sources": [
+    {
+      "id": "example_page",
+      "enabled": true,
+      "start_urls": [
+        "https://example.com/"
+      ],
+      "fetcher": "http",
+      "parser": "html",
+      "discoverer": "none",
+      "extractor": "generic_article",
+      "crawl": {
+        "max_depth": 0,
+        "max_pages": 1,
+        "same_domain": true
+      },
+      "url_rules": {
+        "allow_patterns": [
+          "https://example\\.com/"
+        ],
+        "deny_patterns": []
+      },
+      "metadata": {
+        "example": {
+          "source_name": "Example"
+        }
+      }
+    }
+  ]
+}
