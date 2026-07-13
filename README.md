@@ -1,47 +1,49 @@
 # Unified Crawler
 
-统一爬虫使用同一个入口，根据不同配置文件执行不同采集任务。
-
-## 配置
-
-- `configs/coin_knowledge.json`：虚拟货币知识资料采集配置
-- `configs/illegal_cases.json`：虚拟货币违法犯罪案例采集配置
-
-两个配置文件均为完整自包含结构，包含 `job`、`runtime`、`output` 和 `sources`。业务字段仅保存在 `metadata.knowledge` 或 `metadata.illegal_case` 中，核心爬虫不解析业务语义。
-
-## 运行
+Run either crawl job through the same entry point:
 
 ```powershell
-python main.py --config configs/coin_knowledge.json
-python main.py --config configs/illegal_cases.json
+& 'D:\anaconda3\envs\crawler_0706\python.exe' main.py --config configs\coin_knowledge.json
+& 'D:\anaconda3\envs\crawler_0706\python.exe' main.py --config configs\illegal_cases.json
 ```
 
-常用参数：
+`--config` is required. Limit a run to selected sources, pages, and HTML depth:
 
 ```powershell
-python main.py --config configs/illegal_cases.json --source-id source_001 --max-pages 1 --max-depth 0
-python main.py --config configs/coin_knowledge.json --dry-run
+& 'D:\anaconda3\envs\crawler_0706\python.exe' main.py --config configs\illegal_cases.json --source-id source_001 --max-pages 3 --max-depth 1
 ```
 
-可选参数：`--source-id`、`--max-pages`、`--max-depth`、`--output-dir`、`--dry-run`、`--no-progress`。
+## Deep expansion
 
-## 代理端口
+The default `controlled` mode expands only HTML pages. PDF, GitHub, Markdown, API, and other terminal content can be fetched, but never discovers more links. `strict` requires every candidate URL to match configured allow/deny rules.
 
-如果需要通过 VPN 或本地代理访问外部网站，保留原先的端口配置：
+```powershell
+& 'D:\anaconda3\envs\crawler_0706\python.exe' main.py --config configs\illegal_cases.json --expansion-mode strict
+& 'D:\anaconda3\envs\crawler_0706\python.exe' main.py --config configs\coin_knowledge.json --dry-run
+```
+
+Useful options: `--source-id`, `--max-pages`, `--max-depth`, `--expansion-mode`, `--output-dir`, `--dry-run`, and `--no-progress`.
+
+Each run writes the following files to the configured output directory:
+
+- `records.jsonl`
+- `failures.jsonl`
+- `crawl_report.json`
+- `expansion_report.json`
+- `source_associations.jsonl`
+- `failure_domain_report.json`
+
+`expansion_report.json` records discovered candidates, accepted HTML and terminal links, filtered reasons, and reasons a source could not expand. `source_associations.jsonl` preserves source metadata when a URL is already fetched by another source. `failure_domain_report.json` groups failures by domain and error type.
+
+For illegal-case jobs, use `source_role` to make the crawl boundary explicit: `case_detail`, `topic_page`, `case_list`, `announcement_list`, or `pdf_report`. Only topic, list, and announcement sources can expand HTML links. A source may optionally define `request.verify_tls`, `request.trust_env`, and `request.proxies`; certificate validation remains enabled by default.
+
+## Proxy port
+
+Use the existing local proxy port when required:
 
 ```powershell
 $env:HTTP_PROXY="http://127.0.0.1:7892"
 $env:HTTPS_PROXY="http://127.0.0.1:7892"
 ```
 
-设置后再执行 `python main.py --config ...`。
-
-## 输出
-
-默认写入配置中的 `output.directory`，包含：
-
-- `records.jsonl`
-- `failures.jsonl`
-- `crawl_report.json`
-
-`data/` 已由 `.gitignore` 排除，不提交爬取结果。
+`data/` is ignored by Git and crawl output is not committed.

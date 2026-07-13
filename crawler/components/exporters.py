@@ -4,22 +4,28 @@ from pathlib import Path
 
 
 class JsonlExporter:
-    def __init__(self, output_dir, records_file, failures_file):
+    def __init__(self, output_dir, records_file, failures_file, associations_file="source_associations.jsonl"):
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
-        self.records_path = self.output_dir / records_file
-        self.failures_path = self.output_dir / failures_file
-        self.records = self.records_path.open("a", encoding="utf-8")
-        self.failures = self.failures_path.open("a", encoding="utf-8")
+        self.records = (self.output_dir / records_file).open("a", encoding="utf-8")
+        self.failures = (self.output_dir / failures_file).open("a", encoding="utf-8")
+        self.associations = (self.output_dir / associations_file).open("a", encoding="utf-8")
+
+    @staticmethod
+    def _write(handle, value):
+        handle.write(json.dumps(value, ensure_ascii=False, sort_keys=True) + "\n")
+        handle.flush()
 
     def write_record(self, record):
-        self.records.write(json.dumps(record, ensure_ascii=False, sort_keys=True) + "\n")
-        self.records.flush()
+        self._write(self.records, record)
 
     def write_failure(self, failure):
-        self.failures.write(json.dumps(failure, ensure_ascii=False, sort_keys=True) + "\n")
-        self.failures.flush()
+        self._write(self.failures, failure)
+
+    def write_association(self, association):
+        self._write(self.associations, association)
 
     def close(self):
         self.records.close()
         self.failures.close()
+        self.associations.close()

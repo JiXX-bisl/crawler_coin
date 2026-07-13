@@ -20,13 +20,15 @@
     "deduplication": {
       "url": true,
       "content": true
-    }
+    },
+    "expansion_mode": "controlled"
   },
   "output": {
     "directory": "data/coin_knowledge_crawl",
     "records_file": "records.jsonl",
     "failures_file": "failures.jsonl",
-    "report_file": "crawl_report.json"
+    "report_file": "crawl_report.json",
+    "expansion_report_file": "expansion_report.json"
   },
   "sources": [
     {

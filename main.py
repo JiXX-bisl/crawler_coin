@@ -12,6 +12,7 @@ def build_parser():
     parser.add_argument("--source-id", action="append", default=[])
     parser.add_argument("--max-pages", type=int, default=None)
     parser.add_argument("--max-depth", type=int, default=None)
+    parser.add_argument("--expansion-mode", choices=("strict", "controlled"), default=None)
     parser.add_argument("--no-progress", action="store_true", default=False)
     parser.add_argument("--dry-run", action="store_true", default=False)
     return parser
@@ -20,6 +21,8 @@ def build_parser():
 def main(argv=None):
     args = build_parser().parse_args(argv)
     config = load_config(args.config, output_dir=args.output_dir)
+    if args.expansion_mode:
+        config.runtime.expansion_mode = args.expansion_mode
     if args.source_id:
         wanted = set(args.source_id)
         config.sources = [s for s in config.sources if s.id in wanted]
@@ -35,6 +38,7 @@ def main(argv=None):
                     "job": config.job,
                     "sources": len(config.sources),
                     "enabled_sources": len([s for s in config.sources if s.enabled]),
+                    "expansion_mode": config.runtime.expansion_mode,
                     "output": config.output.__dict__,
                 },
                 ensure_ascii=False,

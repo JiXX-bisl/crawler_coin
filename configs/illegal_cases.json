@@ -8,7 +8,7 @@
     "metadata": {
       "dataset": "illegal_cases",
       "source_config": "virtual_currency_illegal_case_sources.json",
-      "source_count": 50
+      "source_count": 52
     }
   },
   "runtime": {
@@ -20,13 +20,17 @@
     "deduplication": {
       "url": true,
       "content": true
-    }
+    },
+    "expansion_mode": "controlled"
   },
   "output": {
     "directory": "data/illegal_cases_crawl",
     "records_file": "records.jsonl",
     "failures_file": "failures.jsonl",
-    "report_file": "crawl_report.json"
+    "report_file": "crawl_report.json",
+    "expansion_report_file": "expansion_report.json",
+    "associations_file": "source_associations.jsonl",
+    "failure_domain_report_file": "failure_domain_report.json"
   },
   "sources": [
     {
@@ -43,16 +47,16 @@
       "crawl": {
         "priority": 1,
         "max_depth": 1,
-        "max_pages": 200,
+        "max_pages": 30,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
       },
       "url_rules": {
         "same_domain": true,
-        "path_prefix": null,
+        "path_prefix": "/zixun/xiangqing/",
         "allow_patterns": [
-          "/zixun/xiangqing/436301\\.html"
+          "/zixun/xiangqing/"
         ],
         "deny_patterns": [
           "/login",
@@ -70,7 +74,8 @@
           "/share/",
           "/print/",
           "[?&](utm_source|utm_medium|utm_campaign|spm|from|session|timestamp)=",
-          "\\.(jpg|jpeg|png|gif|svg|css|js|zip|rar|mp4|mp3)(\\?.*)?$"
+          "\\.(jpg|jpeg|png|gif|svg|css|js|zip|rar|mp4|mp3)(\\?.*)?$",
+          "/index\\\\.html$"
         ]
       },
       "discovery": {
@@ -88,7 +93,7 @@
           "法律依据"
         ],
         "negative_keywords": [],
-        "min_link_score": 0.1
+        "min_link_score": 0.65
       },
       "extraction": {
         "strategy": "generic_article",
@@ -185,7 +190,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "topic_page"
     },
     {
       "id": "source_002",
@@ -201,16 +207,16 @@
       "crawl": {
         "priority": 1,
         "max_depth": 1,
-        "max_pages": 200,
+        "max_pages": 30,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
       },
       "url_rules": {
         "same_domain": true,
-        "path_prefix": null,
+        "path_prefix": "/zixun/xiangqing/",
         "allow_patterns": [
-          "/zixun/xiangqing/474151\\.html"
+          "/zixun/xiangqing/"
         ],
         "deny_patterns": [
           "/login",
@@ -228,7 +234,8 @@
           "/share/",
           "/print/",
           "[?&](utm_source|utm_medium|utm_campaign|spm|from|session|timestamp)=",
-          "\\.(jpg|jpeg|png|gif|svg|css|js|zip|rar|mp4|mp3)(\\?.*)?$"
+          "\\.(jpg|jpeg|png|gif|svg|css|js|zip|rar|mp4|mp3)(\\?.*)?$",
+          "/index\\\\.html$"
         ]
       },
       "discovery": {
@@ -246,7 +253,7 @@
           "法律依据"
         ],
         "negative_keywords": [],
-        "min_link_score": 0.1
+        "min_link_score": 0.65
       },
       "extraction": {
         "strategy": "generic_article",
@@ -343,7 +350,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "topic_page"
     },
     {
       "id": "source_003",
@@ -359,16 +367,16 @@
       "crawl": {
         "priority": 1,
         "max_depth": 1,
-        "max_pages": 200,
+        "max_pages": 30,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
       },
       "url_rules": {
         "same_domain": true,
-        "path_prefix": null,
+        "path_prefix": "/zixun/xiangqing/",
         "allow_patterns": [
-          "/zixun/xiangqing/453211\\.html"
+          "/zixun/xiangqing/"
         ],
         "deny_patterns": [
           "/login",
@@ -386,7 +394,8 @@
           "/share/",
           "/print/",
           "[?&](utm_source|utm_medium|utm_campaign|spm|from|session|timestamp)=",
-          "\\.(jpg|jpeg|png|gif|svg|css|js|zip|rar|mp4|mp3)(\\?.*)?$"
+          "\\.(jpg|jpeg|png|gif|svg|css|js|zip|rar|mp4|mp3)(\\?.*)?$",
+          "/index\\\\.html$"
         ]
       },
       "discovery": {
@@ -404,7 +413,7 @@
           "法律依据"
         ],
         "negative_keywords": [],
-        "min_link_score": 0.1
+        "min_link_score": 0.65
       },
       "extraction": {
         "strategy": "generic_article",
@@ -501,7 +510,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "topic_page"
     },
     {
       "id": "source_004",
@@ -517,16 +527,16 @@
       "crawl": {
         "priority": 1,
         "max_depth": 1,
-        "max_pages": 200,
+        "max_pages": 30,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
       },
       "url_rules": {
         "same_domain": true,
-        "path_prefix": null,
+        "path_prefix": "/zixun/xiangqing/",
         "allow_patterns": [
-          "/zixun/xiangqing/440671\\.html"
+          "/zixun/xiangqing/"
         ],
         "deny_patterns": [
           "/login",
@@ -544,7 +554,8 @@
           "/share/",
           "/print/",
           "[?&](utm_source|utm_medium|utm_campaign|spm|from|session|timestamp)=",
-          "\\.(jpg|jpeg|png|gif|svg|css|js|zip|rar|mp4|mp3)(\\?.*)?$"
+          "\\.(jpg|jpeg|png|gif|svg|css|js|zip|rar|mp4|mp3)(\\?.*)?$",
+          "/index\\\\.html$"
         ]
       },
       "discovery": {
@@ -562,7 +573,7 @@
           "法律依据"
         ],
         "negative_keywords": [],
-        "min_link_score": 0.1
+        "min_link_score": 0.65
       },
       "extraction": {
         "strategy": "generic_article",
@@ -658,7 +669,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "topic_page"
     },
     {
       "id": "source_005",
@@ -674,16 +686,16 @@
       "crawl": {
         "priority": 1,
         "max_depth": 1,
-        "max_pages": 200,
+        "max_pages": 30,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
       },
       "url_rules": {
         "same_domain": true,
-        "path_prefix": null,
+        "path_prefix": "/zixun/xiangqing/",
         "allow_patterns": [
-          "/zixun/xiangqing/472271\\.html"
+          "/zixun/xiangqing/"
         ],
         "deny_patterns": [
           "/login",
@@ -701,7 +713,8 @@
           "/share/",
           "/print/",
           "[?&](utm_source|utm_medium|utm_campaign|spm|from|session|timestamp)=",
-          "\\.(jpg|jpeg|png|gif|svg|css|js|zip|rar|mp4|mp3)(\\?.*)?$"
+          "\\.(jpg|jpeg|png|gif|svg|css|js|zip|rar|mp4|mp3)(\\?.*)?$",
+          "/index\\\\.html$"
         ]
       },
       "discovery": {
@@ -719,7 +732,7 @@
           "法律依据"
         ],
         "negative_keywords": [],
-        "min_link_score": 0.1
+        "min_link_score": 0.65
       },
       "extraction": {
         "strategy": "generic_article",
@@ -816,7 +829,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "topic_page"
     },
     {
       "id": "source_006",
@@ -832,16 +846,16 @@
       "crawl": {
         "priority": 1,
         "max_depth": 1,
-        "max_pages": 200,
+        "max_pages": 30,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
       },
       "url_rules": {
         "same_domain": true,
-        "path_prefix": null,
+        "path_prefix": "/xwfbh/dxal/",
         "allow_patterns": [
-          "/xwfbh/dxal/202103/t20210319_513223\\.shtml"
+          "/xwfbh/dxal/"
         ],
         "deny_patterns": [
           "/login",
@@ -877,7 +891,7 @@
           "法律依据"
         ],
         "negative_keywords": [],
-        "min_link_score": 0.1
+        "min_link_score": 0.65
       },
       "extraction": {
         "strategy": "generic_article",
@@ -974,7 +988,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "topic_page"
     },
     {
       "id": "source_007",
@@ -990,16 +1005,16 @@
       "crawl": {
         "priority": 1,
         "max_depth": 1,
-        "max_pages": 200,
+        "max_pages": 30,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
       },
       "url_rules": {
         "same_domain": true,
-        "path_prefix": null,
+        "path_prefix": "/spp/xwfbh/dxal/",
         "allow_patterns": [
-          "/spp/xwfbh/dxal/202312/t20231227_638260\\.shtml"
+          "/spp/xwfbh/dxal/"
         ],
         "deny_patterns": [
           "/login",
@@ -1035,7 +1050,7 @@
           "法律依据"
         ],
         "negative_keywords": [],
-        "min_link_score": 0.1
+        "min_link_score": 0.65
       },
       "extraction": {
         "strategy": "generic_article",
@@ -1133,7 +1148,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "topic_page"
     },
     {
       "id": "source_008",
@@ -1148,8 +1164,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 1,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -1291,7 +1307,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_009",
@@ -1306,8 +1323,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 1,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -1448,7 +1465,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_010",
@@ -1463,8 +1481,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 1,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -1606,7 +1624,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_011",
@@ -1621,8 +1640,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 1,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -1764,7 +1783,8 @@
           ],
           "manual_review_required": true
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_012",
@@ -1779,8 +1799,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 2,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -1919,7 +1939,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_013",
@@ -1934,8 +1955,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 2,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -2075,7 +2096,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_014",
@@ -2090,8 +2112,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 2,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -2231,7 +2253,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_015",
@@ -2246,8 +2269,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 2,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -2387,7 +2410,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_016",
@@ -2402,8 +2426,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 2,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -2543,7 +2567,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_017",
@@ -2558,8 +2583,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 2,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -2698,7 +2723,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_018",
@@ -2713,8 +2739,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 2,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -2853,7 +2879,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_019",
@@ -2868,8 +2895,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 2,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -3010,7 +3037,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_020",
@@ -3026,16 +3054,16 @@
       "crawl": {
         "priority": 1,
         "max_depth": 1,
-        "max_pages": 200,
+        "max_pages": 30,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
       },
       "url_rules": {
         "same_domain": true,
-        "path_prefix": null,
+        "path_prefix": "/12309/C015/",
         "allow_patterns": [
-          "/12309/C015/1966439034540699649\\.html"
+          "/12309/C015/"
         ],
         "deny_patterns": [
           "/login",
@@ -3053,7 +3081,8 @@
           "/share/",
           "/print/",
           "[?&](utm_source|utm_medium|utm_campaign|spm|from|session|timestamp)=",
-          "\\.(jpg|jpeg|png|gif|svg|css|js|zip|rar|mp4|mp3)(\\?.*)?$"
+          "\\.(jpg|jpeg|png|gif|svg|css|js|zip|rar|mp4|mp3)(\\?.*)?$",
+          "/(?:grzx|myWorkbench|wsxf|jctzw|tzgg|wcnrbhzq|bszn)(?:/|$)"
         ]
       },
       "discovery": {
@@ -3070,8 +3099,15 @@
           "裁判结果",
           "法律依据"
         ],
-        "negative_keywords": [],
-        "min_link_score": 0.1
+        "negative_keywords": [
+          "myworkbench",
+          "grzx",
+          "wsxf",
+          "jctzw",
+          "tzgg",
+          "bszn"
+        ],
+        "min_link_score": 0.65
       },
       "extraction": {
         "strategy": "generic_article",
@@ -3170,7 +3206,8 @@
           ],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "topic_page"
     },
     {
       "id": "source_021",
@@ -3186,7 +3223,7 @@
       "crawl": {
         "priority": 2,
         "max_depth": 0,
-        "max_pages": 200,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -3329,7 +3366,8 @@
           ],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "pdf_report"
     },
     {
       "id": "source_022",
@@ -3344,8 +3382,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 2,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -3487,7 +3525,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_023",
@@ -3502,8 +3541,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 2,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -3644,7 +3683,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_024",
@@ -3659,8 +3699,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 2,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -3802,7 +3842,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_025",
@@ -3818,16 +3859,16 @@
       "crawl": {
         "priority": 1,
         "max_depth": 1,
-        "max_pages": 200,
+        "max_pages": 20,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
       },
       "url_rules": {
         "same_domain": true,
-        "path_prefix": null,
+        "path_prefix": "/csrc/c100028/",
         "allow_patterns": [
-          "/csrc/c100028/c7614318/content\\.shtml"
+          "/csrc/c100028/"
         ],
         "deny_patterns": [
           "/login",
@@ -3845,7 +3886,8 @@
           "/share/",
           "/print/",
           "[?&](utm_source|utm_medium|utm_campaign|spm|from|session|timestamp)=",
-          "\\.(jpg|jpeg|png|gif|svg|css|js|zip|rar|mp4|mp3)(\\?.*)?$"
+          "\\.(jpg|jpeg|png|gif|svg|css|js|zip|rar|mp4|mp3)(\\?.*)?$",
+          "/(?:common_list|common_xq_list)(?:\\\\.s?html)?(?:\\\\?|$)"
         ]
       },
       "discovery": {
@@ -3862,8 +3904,12 @@
           "执法进展",
           "风险提示"
         ],
-        "negative_keywords": [],
-        "min_link_score": 0.1
+        "negative_keywords": [
+          "common_list",
+          "common_xq_list",
+          "annual"
+        ],
+        "min_link_score": 0.65
       },
       "extraction": {
         "strategy": "generic_article",
@@ -3963,7 +4009,8 @@
           ],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "announcement_list"
     },
     {
       "id": "source_026",
@@ -3978,8 +4025,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 2,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -4118,7 +4165,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_027",
@@ -4133,8 +4181,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 2,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -4274,7 +4322,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_028",
@@ -4289,8 +4338,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 2,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -4429,7 +4478,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_029",
@@ -4444,8 +4494,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 2,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -4585,7 +4635,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_030",
@@ -4600,8 +4651,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 2,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -4741,7 +4792,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_031",
@@ -4756,8 +4808,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 2,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -4897,7 +4949,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_032",
@@ -4912,8 +4965,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 2,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -5055,7 +5108,8 @@
           ],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_033",
@@ -5070,8 +5124,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 2,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -5211,7 +5265,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_034",
@@ -5227,7 +5282,7 @@
       "crawl": {
         "priority": 2,
         "max_depth": 0,
-        "max_pages": 200,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": true
@@ -5369,7 +5424,8 @@
           ],
           "manual_review_required": true
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_035",
@@ -5384,8 +5440,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 2,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -5524,7 +5580,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_036",
@@ -5539,8 +5596,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 2,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -5680,7 +5737,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_037",
@@ -5695,8 +5753,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 2,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -5836,7 +5894,8 @@
           "risk_notes": [],
           "manual_review_required": false
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_038",
@@ -5852,7 +5911,7 @@
       "crawl": {
         "priority": 3,
         "max_depth": 2,
-        "max_pages": 200,
+        "max_pages": 30,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -5997,7 +6056,8 @@
           ],
           "manual_review_required": true
         }
-      }
+      },
+      "source_role": "case_list"
     },
     {
       "id": "source_039",
@@ -6007,13 +6067,13 @@
       ],
       "fetcher": "http",
       "parser": "auto",
-      "discoverer": "html_links",
+      "discoverer": "none",
       "extractor": "generic_article",
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 3,
         "max_depth": 0,
-        "max_pages": 200,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -6158,7 +6218,8 @@
           ],
           "manual_review_required": true
         }
-      }
+      },
+      "source_role": "pdf_report"
     },
     {
       "id": "source_040",
@@ -6168,13 +6229,13 @@
       ],
       "fetcher": "http",
       "parser": "auto",
-      "discoverer": "html_links",
+      "discoverer": "none",
       "extractor": "generic_article",
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 3,
         "max_depth": 0,
-        "max_pages": 200,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -6319,7 +6380,8 @@
           ],
           "manual_review_required": true
         }
-      }
+      },
+      "source_role": "pdf_report"
     },
     {
       "id": "source_041",
@@ -6334,8 +6396,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 3,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -6478,7 +6540,8 @@
           ],
           "manual_review_required": true
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_042",
@@ -6493,8 +6556,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 3,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -6638,7 +6701,8 @@
           ],
           "manual_review_required": true
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_043",
@@ -6653,8 +6717,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 3,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -6799,7 +6863,8 @@
           ],
           "manual_review_required": true
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_044",
@@ -6814,8 +6879,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 3,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -6958,7 +7023,8 @@
           ],
           "manual_review_required": true
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_045",
@@ -6973,8 +7039,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 3,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -7118,7 +7184,8 @@
           ],
           "manual_review_required": true
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_046",
@@ -7133,8 +7200,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 3,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -7278,7 +7345,8 @@
           ],
           "manual_review_required": true
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_047",
@@ -7293,8 +7361,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 3,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -7439,7 +7507,8 @@
           ],
           "manual_review_required": true
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_048",
@@ -7454,8 +7523,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 3,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -7599,7 +7668,8 @@
           ],
           "manual_review_required": true
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_049",
@@ -7614,8 +7684,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 3,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -7760,7 +7830,8 @@
           ],
           "manual_review_required": true
         }
-      }
+      },
+      "source_role": "case_detail"
     },
     {
       "id": "source_050",
@@ -7775,8 +7846,8 @@
       "pipeline": "illegal_cases",
       "crawl": {
         "priority": 3,
-        "max_depth": 1,
-        "max_pages": 200,
+        "max_depth": 0,
+        "max_pages": 1,
         "same_domain": true,
         "follow_external_links": false,
         "requires_javascript": false
@@ -7919,7 +7990,322 @@
           ],
           "manual_review_required": true
         }
-      }
+      },
+      "source_role": "case_detail"
+    },
+    {
+      "id": "source_051",
+      "enabled": true,
+      "start_urls": [
+        "https://www.court.gov.cn/zixun/xiangqing/372731.html"
+      ],
+      "fetcher": "http",
+      "parser": "auto",
+      "discoverer": "html_links",
+      "extractor": "generic_article",
+      "pipeline": "illegal_cases",
+      "crawl": {
+        "priority": 1,
+        "max_depth": 1,
+        "max_pages": 30,
+        "same_domain": true,
+        "follow_external_links": false,
+        "requires_javascript": false
+      },
+      "url_rules": {
+        "same_domain": true,
+        "path_prefix": "/zixun/xiangqing/",
+        "allow_patterns": [
+          "/zixun/xiangqing/"
+        ],
+        "deny_patterns": [
+          "/login",
+          "/register",
+          "/user/",
+          "/comment/",
+          "/price/",
+          "/market/",
+          "/trade/",
+          "/invest/",
+          "/advert",
+          "/job/",
+          "/contact/",
+          "/privacy/",
+          "/share/",
+          "/print/",
+          "[?&](utm_source|utm_medium|utm_campaign|spm|from|session|timestamp)=",
+          "\\.(jpg|jpeg|png|gif|svg|css|js|zip|rar|mp4|mp3)(\\?.*)?$",
+          "/index\\\\.html$"
+        ]
+      },
+      "discovery": {
+        "enabled": true,
+        "positive_keywords": [
+          "虚拟货币",
+          "区块链",
+          "网络传销",
+          "典型案例",
+          "基本案情",
+          "作案模式",
+          "涉案金额",
+          "法律定性",
+          "裁判结果",
+          "法律依据"
+        ],
+        "negative_keywords": [],
+        "min_link_score": 0.65
+      },
+      "extraction": {
+        "strategy": "generic_article",
+        "fields": {},
+        "fallback": "generic_article"
+      },
+      "filters": [],
+      "metadata": {
+        "illegal_case": {
+          "id": "source_051",
+          "source_name": "最高人民法院",
+          "publisher": "中华人民共和国最高人民法院",
+          "source_type": "court",
+          "authority_level": "A1",
+          "official_status": true,
+          "region": "中国大陆",
+          "language": [
+            "zh-CN"
+          ],
+          "domain": "court.gov.cn",
+          "seed_url": "https://www.court.gov.cn/zixun/xiangqing/436301.html",
+          "entry_type": "topic_page",
+          "page_title": "人民法院依法惩治金融犯罪典型案例",
+          "crime_types": [
+            "非法经营罪",
+            "集资诈骗罪"
+          ],
+          "content_focus": [
+            "基本案情",
+            "作案模式",
+            "涉案金额",
+            "法律定性",
+            "裁判结果",
+            "法律依据"
+          ],
+          "search_keywords": [
+            "虚拟货币",
+            "区块链",
+            "网络传销",
+            "典型案例"
+          ],
+          "allow_url_patterns": [
+            "/zixun/xiangqing/436301\\.html"
+          ],
+          "deny_url_patterns": [
+            "/login",
+            "/register",
+            "/user/",
+            "/comment/",
+            "/price/",
+            "/market/",
+            "/trade/",
+            "/invest/",
+            "/advert",
+            "/job/",
+            "/contact/",
+            "/privacy/",
+            "/share/",
+            "/print/",
+            "[?&](utm_source|utm_medium|utm_campaign|spm|from|session|timestamp)=",
+            "\\.(jpg|jpeg|png|gif|svg|css|js|zip|rar|mp4|mp3)(\\?.*)?$"
+          ],
+          "crawl_depth": 1,
+          "priority": 1,
+          "quality_score": 95,
+          "traceability_score": 93,
+          "content_completeness_score": 90,
+          "url_stability_score": 94,
+          "requires_javascript": false,
+          "contains_case_list": true,
+          "contains_full_case_text": true,
+          "contains_legal_analysis": true,
+          "contains_judgment_result": true,
+          "contains_legal_basis": true,
+          "supports_pagination": false,
+          "pagination_pattern": null,
+          "publication_date_available": true,
+          "case_number_available": false,
+          "amount_information_available": true,
+          "original_source_traceable": true,
+          "validation": {
+            "access_status": "accessible",
+            "http_status_observed": null,
+            "checked_at": "2026-07-10T03:03:40Z",
+            "redirected": false,
+            "final_url": "https://www.court.gov.cn/zixun/xiangqing/436301.html",
+            "publisher_verified": true,
+            "content_relevance_verified": true,
+            "marketing_risk_detected": false
+          },
+          "selection_reason": "该入口由中华人民共和国最高人民法院发布，主体明确且页面已检索到与涉虚拟货币违法犯罪直接相关的正文。其内容覆盖虚拟货币、区块链、网络传销，适合作为批量发现入口。",
+          "risk_notes": [],
+          "manual_review_required": false
+        }
+      },
+      "source_role": "topic_page"
+    },
+    {
+      "id": "source_052",
+      "enabled": true,
+      "start_urls": [
+        "https://www.spp.gov.cn/xwfbh/dxal/202508/t20250825_704588.shtml"
+      ],
+      "fetcher": "http",
+      "parser": "auto",
+      "discoverer": "html_links",
+      "extractor": "generic_article",
+      "pipeline": "illegal_cases",
+      "crawl": {
+        "priority": 1,
+        "max_depth": 1,
+        "max_pages": 30,
+        "same_domain": true,
+        "follow_external_links": false,
+        "requires_javascript": false
+      },
+      "url_rules": {
+        "same_domain": true,
+        "path_prefix": "/xwfbh/dxal/",
+        "allow_patterns": [
+          "/xwfbh/dxal/"
+        ],
+        "deny_patterns": [
+          "/login",
+          "/register",
+          "/user/",
+          "/comment/",
+          "/price/",
+          "/market/",
+          "/trade/",
+          "/invest/",
+          "/advert",
+          "/job/",
+          "/contact/",
+          "/privacy/",
+          "/share/",
+          "/print/",
+          "[?&](utm_source|utm_medium|utm_campaign|spm|from|session|timestamp)=",
+          "\\.(jpg|jpeg|png|gif|svg|css|js|zip|rar|mp4|mp3)(\\?.*)?$"
+        ]
+      },
+      "discovery": {
+        "enabled": true,
+        "positive_keywords": [
+          "比特币",
+          "跨境洗钱",
+          "陈某枝",
+          "典型案例",
+          "基本案情",
+          "作案模式",
+          "涉案金额",
+          "法律定性",
+          "裁判结果",
+          "法律依据"
+        ],
+        "negative_keywords": [],
+        "min_link_score": 0.65
+      },
+      "extraction": {
+        "strategy": "generic_article",
+        "fields": {},
+        "fallback": "generic_article"
+      },
+      "filters": [],
+      "metadata": {
+        "illegal_case": {
+          "id": "source_052",
+          "source_name": "最高人民检察院",
+          "publisher": "中华人民共和国最高人民检察院、中国人民银行",
+          "source_type": "procuratorate",
+          "authority_level": "A1",
+          "official_status": true,
+          "region": "中国大陆",
+          "language": [
+            "zh-CN"
+          ],
+          "domain": "spp.gov.cn",
+          "seed_url": "https://www.spp.gov.cn/xwfbh/dxal/202103/t20210319_513223.shtml",
+          "entry_type": "topic_page",
+          "page_title": "“两高”依法惩治排饰、隐瞒犯罪所得犯罪典型案例",
+          "crime_types": [
+            "排饰、隐瞒犯罪所得、犯罪所得收益罪"
+          ],
+          "content_focus": [
+            "基本案情",
+            "作案模式",
+            "涉案金额",
+            "法律定性",
+            "裁判结果",
+            "法律依据"
+          ],
+          "search_keywords": [
+            "比特币",
+            "跨境洗钱",
+            "陈某枝",
+            "典型案例"
+          ],
+          "allow_url_patterns": [
+            "/xwfbh/dxal/202103/t20210319_513223\\.shtml"
+          ],
+          "deny_url_patterns": [
+            "/login",
+            "/register",
+            "/user/",
+            "/comment/",
+            "/price/",
+            "/market/",
+            "/trade/",
+            "/invest/",
+            "/advert",
+            "/job/",
+            "/contact/",
+            "/privacy/",
+            "/share/",
+            "/print/",
+            "[?&](utm_source|utm_medium|utm_campaign|spm|from|session|timestamp)=",
+            "\\.(jpg|jpeg|png|gif|svg|css|js|zip|rar|mp4|mp3)(\\?.*)?$"
+          ],
+          "crawl_depth": 1,
+          "priority": 1,
+          "quality_score": 95,
+          "traceability_score": 93,
+          "content_completeness_score": 90,
+          "url_stability_score": 94,
+          "requires_javascript": false,
+          "contains_case_list": true,
+          "contains_full_case_text": true,
+          "contains_legal_analysis": true,
+          "contains_judgment_result": true,
+          "contains_legal_basis": true,
+          "supports_pagination": false,
+          "pagination_pattern": null,
+          "publication_date_available": true,
+          "case_number_available": true,
+          "amount_information_available": true,
+          "original_source_traceable": true,
+          "validation": {
+            "access_status": "accessible",
+            "http_status_observed": null,
+            "checked_at": "2026-07-10T03:03:40Z",
+            "redirected": false,
+            "final_url": "https://www.spp.gov.cn/xwfbh/dxal/202103/t20210319_513223.shtml",
+            "publisher_verified": true,
+            "content_relevance_verified": true,
+            "marketing_risk_detected": false
+          },
+          "selection_reason": "该入口由中华人民共和国最高人民检察院、中国人民银行发布，主体明确且页面已检索到与涉虚拟货币违法犯罪直接相关的正文。其内容覆盖比特币、跨境洗钱、陈某枝，适合作为批量发现入口。",
+          "risk_notes": [],
+          "manual_review_required": false
+        }
+      },
+      "source_role": "topic_page"
     }
   ]
 }
