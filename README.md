@@ -47,3 +47,18 @@ $env:HTTPS_PROXY="http://127.0.0.1:7892"
 ```
 
 `data/` is ignored by Git and crawl output is not committed.
+
+## Data cleaning
+
+Generate a two-column JSONL corpus for chunking and vectorization. Cleaned records
+contain only `label` (a JSON array) and `content`; rejected records are retained
+in a separate audit file.
+
+```powershell
+& 'D:\anaconda3\envs\crawler_0706\python.exe' clean.py `
+  --input data\virtual_currency_illegal_0713_v3\records.jsonl `
+  --output-dir data\virtual_currency_illegal_0713_v3\cleaned
+```
+
+Use `--dataset illegal_cases` or `--dataset coin_knowledge` to override auto
+detection, and `--min-chars 200` to change the quality threshold.
